@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Application.Interfaces.Repositories;
+using Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +8,9 @@ using System.Threading.Tasks;
 
 namespace Application.Interfaces
 {
-    internal interface IUnitOfWork
+    public interface IUnitOfWork : IDisposable
     {
+        IRepository<User> Users { get; }
+        Task<int> SaveAsync();
     }
 }
